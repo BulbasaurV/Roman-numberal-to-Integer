@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+class romanType {
+private:
+    string romanNum; // Roman numeral
+    int intNum; // Positive integer
+    // Function to convert Roman numeral to positive integer
+    int convertToInt(string romanNum) {
+        int intNum = 0;
+        for (int i = 0; i < romanNum.length(); i++) {
+            if (romanNum[i] == 'M') {
+                intNum += 1000;
+            }
+            else if (romanNum[i] == 'D') {
+                intNum += 500;
+            }
+            else if (romanNum[i] == 'C') {
+                intNum += 100;
+            }
+            else if (romanNum[i] == 'L') {
+                intNum += 50;
+            }
+            else if (romanNum[i] == 'X') {
+                intNum += 10;
+            }
+            else if (romanNum[i] == 'V') {
+                intNum += 5;
+            }
+            else if (romanNum[i] == 'I') {
+                intNum += 1;
+            }
+        }
+        return intNum;
+    }
+public:
+    // Constructor
+    romanType(string romanNum) {
+        this->romanNum = romanNum;
+        this->intNum = convertToInt(romanNum);
+    }
+    // Function to print Roman numeral
+    void printRoman() {
+        cout << romanNum << endl;
+    }
+    // Function to print positive integer
+    void printInt() {
+        cout << intNum << endl;
+    }
+};
+
+
+int main() {
+    string roman;
+    cout <<"Enter Roman Number: ";    cin>>roman;
+    romanType num(roman);
+    cout<<"Roman numeral: ";
+    num.printRoman(); 
+    cout<<"Integer: ";
+    num.printInt(); 
+    return 0;
+}
